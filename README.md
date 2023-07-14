@@ -92,3 +92,7 @@ assert_eq!(num_records, max_n);
 // EOF
 assert!(cursor.valid().is_err());
 ```
+
+# How to contribute
+
+We would be happy to hear your thoughts, feedback and pull requests are welcome.
