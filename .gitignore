@@ -1,0 +1,7 @@
+# General
+.idea
+
+# Cargo
+/.cache
+/target
+

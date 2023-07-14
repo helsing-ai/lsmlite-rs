@@ -1,0 +1,3 @@
+File `lsm1-ae2e7fc.c` is the amalgamated version of all source files found at `https://github.com/sqlite/sqlite/tree/master/ext/lsm1` (except for `lsm_vtab.c` due to the inclusion of `sqlite3ext.h`). Suffix `ae2e7fc` is the short hash of the last official commit done to `lsm1`'s directory as of March 27th 2023. 
+
+To locally update `lsm1`'s code using the latest version contained in SQLite3's source code, run `tclsh tool/mklsm1c.tcl` inside SQLite3's directory `ext/lsm1` (after having commented out the line containing `%dir%/lsm_vtab.c` in `tool/mklsm1c.tcl`). This will produce the amalgamated file `lsm1.c` that can be then used in `build.rs` - and thus used by our bindings upon new compilation.
