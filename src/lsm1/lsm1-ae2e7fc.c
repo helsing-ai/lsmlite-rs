@@ -9,7 +9,7 @@
 # undef NDEBUG
 #endif
 
-//#line 1 "lsm.h"
+#line 1 "lsm.h"
 /*
 ** 2011-08-10
 **
@@ -695,7 +695,7 @@ void lsm_config_work_hook(lsm_db *, void (*)(lsm_db *, void *), void *);
 #endif
 #endif /* ifndef _LSM_H */
 
-//#line 1 "lsmInt.h"
+#line 1 "lsmInt.h"
 /*
 ** 2011-08-18
 **
@@ -1694,7 +1694,7 @@ static int lsmStrlen(const char *zName);
 
 #endif
 
-//#line 1 "lsm_ckpt.c"
+#line 1 "lsm_ckpt.c"
 /*
 ** 2011-09-11
 **
@@ -2935,7 +2935,7 @@ static int lsmCheckpointSize(lsm_db *db, int *pnKB){
   return rc;
 }
 
-//#line 1 "lsm_file.c"
+#line 1 "lsm_file.c"
 /*
 ** 2011-08-26
 **
@@ -6248,7 +6248,7 @@ static int lsmFsDbPageIsLast(Segment *pSeg, Page *pPg){
 }
 #endif
 
-//#line 1 "lsm_log.c"
+#line 1 "lsm_log.c"
 /*
 ** 2011-08-13
 **
@@ -7406,7 +7406,7 @@ static void lsmLogClose(lsm_db *db){
   }
 }
 
-//#line 1 "lsm_main.c"
+#line 1 "lsm_main.c"
 /*
 ** 2011-08-18
 **
@@ -8105,7 +8105,6 @@ static int doWriteOp(
     nAfter = lsmTreeSize(pDb);
     nDiff = (nAfter/nQuant) - (nBefore/nQuant);
     if( rc==LSM_OK && pDb->bAutowork && nDiff!=0 ){
-      //printf("nBefore = %d, nAfter = %d, nQuant = %d, nDiff = %d\n", nBefore, nAfter, nQuant, nDiff);
       rc = lsmSortedAutoWork(pDb, nDiff * LSM_AUTOWORK_QUANT);
     }
   }
@@ -8417,7 +8416,7 @@ int lsm_set_user_version(lsm_db *pDb, unsigned int iUsr){
   return rc;
 }
 
-//#line 1 "lsm_mem.c"
+#line 1 "lsm_mem.c"
 /*
 ** 2011-08-18
 **
@@ -8523,7 +8522,7 @@ static char *lsmMallocStrdup(lsm_env *pEnv, const char *zIn){
   return zRet;
 }
 
-//#line 1 "lsm_mutex.c"
+#line 1 "lsm_mutex.c"
 /*
 ** 2012-01-30
 **
@@ -8613,7 +8612,7 @@ static int lsmMutexNotHeld(lsm_env *pEnv, lsm_mutex *pMutex){
 }
 #endif
 
-//#line 1 "lsm_shared.c"
+#line 1 "lsm_shared.c"
 /*
 ** 2012-01-23
 **
@@ -10609,7 +10608,7 @@ int lsm_checkpoint(lsm_db *pDb, int *pnKB){
   return rc;
 }
 
-//#line 1 "lsm_sorted.c"
+#line 1 "lsm_sorted.c"
 /*
 ** 2011-08-14
 **
@@ -15960,8 +15959,7 @@ int lsm_work(lsm_db *pDb, int nMerge, int nKB, int *pnWrite){
   }else{
     nPage = -1;
   }
-    
-    //printf("lsm_work: nKB: %d, nPgsz: %d, nPage: %d.\n", nKB, nPgsz, nPage);
+
   rc = doLsmWork(pDb, nMerge, nPage, &nWrite);
   
   if( pnWrite ){
@@ -16807,7 +16805,7 @@ static int assertBtreeOk(
 }
 #endif /* ifdef LSM_DEBUG_EXPENSIVE */
 
-//#line 1 "lsm_str.c"
+#line 1 "lsm_str.c"
 /*
 ** 2012-04-27
 **
@@ -16957,7 +16955,7 @@ static char *lsmMallocPrintf(lsm_env *pEnv, const char *zFormat, ...){
   return (char *)lsmReallocOrFree(pEnv, s.z, s.n+1);
 }
 
-//#line 1 "lsm_tree.c"
+#line 1 "lsm_tree.c"
 /*
 ** 2011-08-18
 **
@@ -19424,7 +19422,7 @@ static int treeCountEntries(lsm_db *db){
 }
 #endif
 
-//#line 1 "lsm_unix.c"
+#line 1 "lsm_unix.c"
 /*
 ** 2011-12-03
 **
@@ -20179,7 +20177,7 @@ lsm_env *lsm_default_env(void){
 
 #endif
 
-//#line 1 "lsm_varint.c"
+#line 1 "lsm_varint.c"
 
 /*
 ** 2012-02-08
@@ -20382,7 +20380,7 @@ static int lsmVarintSize(u8 c){
   return (int)(c - 246);
 }
 
-//#line 1 "lsm_win32.c"
+#line 1 "lsm_win32.c"
 /*
 ** 2011-12-03
 **

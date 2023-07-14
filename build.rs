@@ -19,11 +19,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     cc::Build::new()
         .file("src/lsm1/lsm1-ae2e7fc.c")
         .define("LSM_MUTEX_PTHREADS", "1")
-        // .define("LSM_LOG_WORK", "1")
         .static_flag(true)
         .warnings(false)
-        .opt_level(2)
-        .debug(true)
         .compile("liblsm1.a");
 
     Ok(())
