@@ -1,5 +1,8 @@
 # lsmlite-rs
 
+[![Cargo](https://img.shields.io/crates/v/lsmlite-rs.svg)](https://crates.io/crates/lsmlite-rs)
+[![Documentation](https://docs.rs/lsmlite-rs/badge.svg)](https://docs.rs/lsmlite-rs)
+
 Helsing's Rust bindings for `sqlite3`'s `lsm1` extension.
 
 `lsmlite-rs` exposes `sqlite3`'s [lsm1](https://github.com/sqlite/sqlite/tree/master/ext/lsm1) extension in stand-alone fashion (without the whole `sqlite3` stack). This extension is an excellent implementation of Log-structured Merge Trees and is in principle similar in spirit to [RocksDB](https://rocksdb.org/) and [WiredTiger](https://source.wiredtiger.com/) (the storage engine of [MongoDB](https://www.mongodb.com/docs/manual/core/wiredtiger/)). Unlike RocksDB, for example, [lsm1](https://github.com/sqlite/sqlite/tree/master/ext/lsm1) structures data on stable storage as a collection of read-only B-trees (called "segments" in `lsm1`'s terminology) that increase in size as the database grows. Thus, `lsm1` follows the fundamental design principles of [bLSM](https://dl.acm.org/doi/10.1145/2213836.2213862) rather than those of a traditional LSM-Tree - in which data is stored in immutable sorted arrays. This comes with the advantage of offering excellent I/O for reads out-of-the-box; while also being efficient at writing data.
