@@ -1,15 +1,17 @@
 [package]
 authors = ["Helsing GmbH"]
-description = "Helsing's Rust bindings for sqlite3's lsm1 extension in stand-alone fashion."
-name = "lsmlite-rs"
 build = "build.rs"
-version = "0.1.0"
+categories = ["database"]
+description = "Helsing's Rust bindings for sqlite3's lsm1 extension in stand-alone fashion."
+documentation = "https://docs.rs/lsmlite-rs/"
 edition = "2021"
-readme = "README.md"
-license-file = "LICENSE"
 keywords = ["lsm", "storage-engine", "embedded", "persistence"]
+license = "Apache-2.0"
+name = "lsmlite-rs"
+readme = "README.md"
 repository = "https://github.com/helsing-ai/lsmlite-rs"
-rust-version = "1.64"
+rust-version = "1.65"
+version = "0.1.1-dev"
 
 [dependencies]
 libz-sys = { version = "1.1.8", default-features = false, features = ["libc"] }
@@ -17,7 +19,7 @@ lz4-sys = "1.9.4"
 prometheus = "0.13.3"
 serde = { version = "1.0.157", features = ["derive"] }
 tracing = { version = "0.1.37", features = ["log"] }
-zstd-sys = "2.0.7+zstd.1.5.4"
+zstd-sys = "2.0.7"
 
 [dev-dependencies]
 chrono = "0.4.24"
