@@ -522,7 +522,7 @@ mod tests {
         let db_fqn_name = format!(
             "{}/test-create-background-thread-with-no-thread-{}",
             db_path,
-            now.timestamp_nanos()
+            now.timestamp_nanos_opt().unwrap()
         );
         let conf = DbConf {
             mode: LsmMode::LsmNoBackgroundThreads,
@@ -539,7 +539,7 @@ mod tests {
         let db_fqn_name = format!(
             "{}/test-create-background-thread-merger-{}",
             db_path,
-            now.timestamp_nanos()
+            now.timestamp_nanos_opt().unwrap()
         );
         let conf = DbConf {
             mode: LsmMode::LsmBackgroundMerger,
@@ -556,7 +556,7 @@ mod tests {
         let db_fqn_name = format!(
             "{}/test-create-background-thread-checkpointer-{}",
             db_path,
-            now.timestamp_nanos()
+            now.timestamp_nanos_opt().unwrap()
         );
         let conf = DbConf {
             mode: LsmMode::LsmBackgroundCheckpointer,

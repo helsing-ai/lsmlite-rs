@@ -658,7 +658,7 @@ mod tests {
     ) -> LsmDb {
         let now = Utc::now();
         let db_path = "/tmp".to_string();
-        let db_base_name = format!("{}-{}-{}", name, id, now.timestamp_nanos());
+        let db_base_name = format!("{}-{}-{}", name, id, now.timestamp_nanos_opt().unwrap());
 
         let buckets = DEFAULT_BUCKETS.to_vec();
         let opts_1 = HistogramOpts::new("non_typed_write_times_s", "non_typed_write_times_s help")
@@ -2615,7 +2615,7 @@ mod tests {
         let db_base_name: String = format!(
             "{}-{}",
             "test-multiple-writers-interlaced",
-            now.timestamp_nanos()
+            now.timestamp_nanos_opt().unwrap()
         );
         // We now produce certain amount of blobs and persist them.
         let num_blobs = 10000_usize;
@@ -2764,7 +2764,7 @@ mod tests {
         let now = Utc::now();
         let db_conf = DbConf {
             db_path: "/tmp".into(),
-            db_base_name: format!("{}-{}", bad_filename, now.timestamp_nanos(),),
+            db_base_name: format!("{}-{}", bad_filename, now.timestamp_nanos_opt().unwrap(),),
             mode: LsmMode::LsmNoBackgroundThreads,
             handle_mode: LsmHandleMode::ReadWrite,
             metrics: None,
@@ -3042,8 +3042,11 @@ mod tests {
         let mut master_prng: Mt64 = SeedableRng::seed_from_u64(0x41bd56915d5c7804);
         let now = Utc::now();
         let db_path: String = "/tmp".to_string();
-        let db_base_name: String =
-            format!("{}-{}", "test-no-concurrent_writers", now.timestamp_nanos());
+        let db_base_name: String = format!(
+            "{}-{}",
+            "test-no-concurrent_writers",
+            now.timestamp_nanos_opt().unwrap()
+        );
         // We now produce certain amount of blobs and persist them.
         let num_blobs = 10000_usize;
         let size_blob = 1 << 10; // 1 KB
@@ -3133,7 +3136,12 @@ mod tests {
         // We first produce a file we can work on
         let now = Utc::now();
         let db_path = "/tmp".to_string();
-        let db_base_name = format!("{}-{}-{}", "test-read-only-mode", 0, now.timestamp_nanos());
+        let db_base_name = format!(
+            "{}-{}-{}",
+            "test-read-only-mode",
+            0,
+            now.timestamp_nanos_opt().unwrap()
+        );
 
         let mut db_conf = DbConf::new(db_path, db_base_name);
 
@@ -3190,7 +3198,7 @@ mod tests {
             "{}-{}-{}",
             "test-read-only-mode-compressed-db",
             0,
-            now.timestamp_nanos()
+            now.timestamp_nanos_opt().unwrap()
         );
 
         let mut db_conf = DbConf::new_with_parameters(
@@ -3259,7 +3267,7 @@ mod tests {
             "{}-{}-{}",
             "test-cannot-open-with-different-compression",
             0,
-            now.timestamp_nanos()
+            now.timestamp_nanos_opt().unwrap()
         );
 
         let mut db_conf = DbConf::new_with_parameters(

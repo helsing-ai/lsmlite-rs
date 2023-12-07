@@ -12,7 +12,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "{}-{}-{}",
         "example-read-only-mode",
         0,
-        now.timestamp_nanos()
+        now.timestamp_nanos_opt().unwrap()
     );
 
     let db_conf = DbConf::new(db_path.clone(), db_base_name.clone());
