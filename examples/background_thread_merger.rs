@@ -11,7 +11,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "{}-{}-{}",
         "example-bg-checkpointer",
         0,
-        now.timestamp_nanos()
+        now.timestamp_nanos_opt().unwrap()
     );
 
     // A background merger is also a checkpointer. Thus, the size of the file

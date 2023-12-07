@@ -7,7 +7,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // We first produce a file we can work on
     let now = Utc::now();
     let db_path = "/tmp".to_string();
-    let db_base_name = format!("{}-{}-{}", "example-compression", 0, now.timestamp_nanos());
+    let db_base_name = format!(
+        "{}-{}-{}",
+        "example-compression",
+        0,
+        now.timestamp_nanos_opt().unwrap()
+    );
 
     let db_conf = DbConf::new_with_parameters(
         db_path,

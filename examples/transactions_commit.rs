@@ -11,7 +11,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "{}-{}-{}",
         "example-transactions-commit",
         0,
-        now.timestamp_nanos()
+        now.timestamp_nanos_opt().unwrap()
     );
 
     let db_conf = DbConf::new(db_path, db_base_name);

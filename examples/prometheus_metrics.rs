@@ -12,7 +12,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "{}-{}-{}",
         "example-prometheus-metrics",
         0,
-        now.timestamp_nanos()
+        now.timestamp_nanos_opt().unwrap()
     );
 
     let buckets = DEFAULT_BUCKETS.to_vec();
