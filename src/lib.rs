@@ -3310,7 +3310,9 @@ mod tests {
         assert_eq!(rc.unwrap_err(), LsmErrorCode::LsmMismatch);
 
         // But this also happens when reading.
-        let Err(cursor) = Disk::cursor_open(&db) else { panic!("Unexpected result.") };
+        let Err(cursor) = Disk::cursor_open(&db) else {
+            panic!("Unexpected result.")
+        };
         assert_eq!(cursor, LsmErrorCode::LsmMismatch);
 
         test_disconnect(&mut db);
@@ -3328,7 +3330,9 @@ mod tests {
         test_connect(&mut db);
 
         // But this also happens when reading.
-        let Err(cursor) = Disk::cursor_open(&db) else { panic!("Unexpected result.") };
+        let Err(cursor) = Disk::cursor_open(&db) else {
+            panic!("Unexpected result.")
+        };
         assert_eq!(cursor, LsmErrorCode::LsmMismatch);
     }
 
