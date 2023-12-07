@@ -19606,7 +19606,7 @@ static int lsmPosixOsSync(lsm_file *pFile){
   if( p->pMap ){
     prc = msync(p->pMap, p->nMap, MS_SYNC);
   }
-  if( prc==0 ) prc = fdatasync(p->fd);
+  if( prc==0 ) prc = fsync(p->fd);
   if( prc<0 ) rc = LSM_IOERR_BKPT;
 #else
   (void)pFile;
