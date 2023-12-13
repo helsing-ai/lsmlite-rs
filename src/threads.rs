@@ -204,7 +204,7 @@ impl LsmBgWorker {
 
         unsafe {
             // Get a new handle to connect to the database on disk.
-            rc = lsm_new(null_mut(), &db.db_handle);
+            rc = lsm_new(null_mut(), &mut db.db_handle);
 
             if rc != 0 {
                 let ec = LsmErrorCode::try_from(rc);
