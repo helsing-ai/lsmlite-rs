@@ -60,7 +60,7 @@ extern "C" {
     pub(crate) fn lsm_config(db: *mut lsm_db, e_param: i32, ...) -> i32;
     pub(crate) fn lsm_work(db: *mut lsm_db, n_segments: i32, n_kb: i32, p_nwrite: *mut i32) -> i32;
     pub(crate) fn lsm_checkpoint(db: *mut lsm_db, p_n_kb: *mut i32) -> i32;
-    pub(crate) fn lsm_new(env: *mut lsm_env, db: *const *mut lsm_db) -> i32;
+    pub(crate) fn lsm_new(env: *mut lsm_env, db: *mut *mut lsm_db) -> i32;
     pub(crate) fn lsm_open(db: *mut lsm_db, file_name: *const c_char) -> i32;
     pub(crate) fn lsm_close(db: *mut lsm_db) -> i32;
 
@@ -189,10 +189,10 @@ impl Disk for LsmDb {
 
         // Database has been initialized, thus we can proceed.
         let mut rc: i32;
-        let db_handle = null_mut();
+        let mut db_handle = null_mut();
         unsafe {
             // Get a new handle to connect to the database on disk.
-            rc = lsm_new(null_mut(), &db_handle);
+            rc = lsm_new(null_mut(), &mut db_handle);
         }
 
         if rc != 0 {
