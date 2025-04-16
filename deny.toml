@@ -1,17 +1,12 @@
 [licenses]
-unlicensed = "deny"
 allow = [
     "MIT",
     "Apache-2.0",
-    "Unicode-DFS-2016"
+    "Unicode-3.0",
+    "ISC",
+    "BSD-3-Clause"
 ]
-default = "deny"
 
 [bans]
 multiple-versions = "warn"
 wildcards = "deny"
-
-[advisories]
-ignore = [
-    "RUSTSEC-2020-0071", # time crate segfault. We only use it in tests.
-]
