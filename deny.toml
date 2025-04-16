@@ -4,11 +4,8 @@ allow = [
     "Apache-2.0",
     "Unicode-3.0",
     "ISC",
+    "BSD-3-Clause"
 ]
-
-[[licenses.exceptions]]
-allow = ["BSD-3-Clause"]
-name = "bindgen"
 
 [bans]
 multiple-versions = "warn"

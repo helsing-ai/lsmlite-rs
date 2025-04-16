@@ -10,7 +10,7 @@ license = "Apache-2.0"
 name = "lsmlite-rs"
 readme = "README.md"
 repository = "https://github.com/helsing-ai/lsmlite-rs"
-rust-version = "1.67"
+rust-version = "1.81"
 version = "0.2.1"
 
 [dependencies]
