@@ -16,7 +16,7 @@ version = "0.2.1"
 [dependencies]
 libz-sys = { version = "1.1.8", default-features = false, features = ["libc"] }
 lz4-sys = "1.9.4"
-prometheus = "0.13.3"
+prometheus = "0.14"
 serde = { version = "1.0.157", features = ["derive"] }
 tracing = { version = "0.1.37", features = ["log"] }
 zstd-sys = "2.0.7"
@@ -35,3 +35,6 @@ cc = "1.0.79"
 
 [profile.dev]
 incremental = false
+
+[package.metadata.typos]
+default.extend-ignore-re = [ "(?Rm)^.*(#|//)\\s*spellchecker:disable-line$" ]

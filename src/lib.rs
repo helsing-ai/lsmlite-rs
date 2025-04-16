@@ -63,9 +63,9 @@ impl DbConf {
     /// 2. The name of the database file.
     /// 3. The mode it will work on (single- or multi-threaded).
     /// 4. Whether the database is to be used in read-only mode, or writes
-    /// are also allowed.
+    ///    are also allowed.
     /// 5. The upper-layer set of (Prometheus) metrics to be updated by
-    /// the database.
+    ///    the database.
     /// 6. Whether compression is to be used or not, and what kind.
     ///
     /// # Example

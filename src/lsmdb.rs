@@ -91,8 +91,8 @@ extern "C" {
     fn lsm_csr_next(cursor: *mut lsm_cursor) -> i32;
     fn lsm_csr_prev(cursor: *mut lsm_cursor) -> i32;
     fn lsm_csr_valid(cursor: *mut lsm_cursor) -> i32;
-    fn lsm_csr_key(cursor: *mut lsm_cursor, pp_key: *const *mut u8, pn_key: *mut i32) -> i32;
-    fn lsm_csr_value(cursor: *mut lsm_cursor, pp_val: *const *mut u8, pn_val: *mut i32) -> i32;
+    fn lsm_csr_key(cursor: *mut lsm_cursor, pp_key: *const *mut u8, pn_key: *mut i32) -> i32; // # spellchecker:disable-line
+    fn lsm_csr_value(cursor: *mut lsm_cursor, pp_val: *const *mut u8, pn_val: *mut i32) -> i32; // # spellchecker:disable-line
     fn lsm_csr_cmp(cursor: *mut lsm_cursor, p_key: *const u8, n_key: i32, pi_res: *mut i32) -> i32;
     #[allow(dead_code)]
     fn lsm_free(env: *mut lsm_env, ptr: *mut c_char);
@@ -401,8 +401,8 @@ impl Disk for LsmDb {
     /// to `connect` has to have the corresponding call to `disconnect`, otherwise:
     /// 1. The resources that belong to the memory handle will be leaked.
     /// 2. The database (file) won't be closed and the next time we open it the recovery
-    /// process will kick-in (which can take considerable time. Depending on the
-    /// size of the log).
+    ///    process will kick-in (which can take considerable time. Depending on the
+    ///    size of the log).
     ///
     /// For completeness, [`LsmDb`] also implements [`Drop`] so that a handle
     /// gets automatically released once it goes out of scope.
@@ -969,15 +969,15 @@ impl Cursor for LsmCursor<'_> {
     /// This positions the cursor on an entry of the database that depends on
     /// the seek mode provided:
     /// 1. If [`LsmCursorSeekOp::LsmCursorSeekLe`] is given, then the cursor will be positioned
-    /// at the entry that is less or equal than the provided key depending on whether
-    /// the key is found in the database or not.
+    ///    at the entry that is less or equal than the provided key depending on whether
+    ///    the key is found in the database or not.
     /// 2. If [`LsmCursorSeekOp::LsmCursorSeekEq`] is given, then the cursor will be positioned
-    /// at the entry that corresponding to the given key, or at the end of the database
-    /// depending on whether the entry is found or not. If the entry is found, a call
-    /// to `valid` on the cursor will return success, and otherwise an error.
+    ///    at the entry that corresponding to the given key, or at the end of the database
+    ///    depending on whether the entry is found or not. If the entry is found, a call
+    ///    to `valid` on the cursor will return success, and otherwise an error.
     /// 3. If [`LsmCursorSeekOp::LsmCursorSeekGe`] is given, then the cursor will be positioned
-    /// at the entry that is greater or equal than the provided key depending on
-    /// whether the key is found in the database or not.
+    ///    at the entry that is greater or equal than the provided key depending on
+    ///    whether the key is found in the database or not.
     fn seek(&mut self, key: &[u8], mode: LsmCursorSeekOp) -> Result<(), LsmErrorCode> {
         if self.db_cursor.is_null() {
             return Err(LsmErrorCode::LsmMisuse);
